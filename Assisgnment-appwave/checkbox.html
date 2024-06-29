@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Store for T-Shirts</title>
+    <link rel="stylesheet" href="checkbox.css">
+    <style>
+        .scrolling-text {
+            width: 100%;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            color: #000;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .scrolling-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 25s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo">
+            <img src="E:\Assisgnment-appwave\logo2.jpg" alt="ML Store Logo">
+            <span>ML Store</span>
+        </div>
+        <div class="nav-links">
+            <a href="product.html">Products</a>
+            <a href="card.html">
+                <img src="E:\Assisgnment-appwave\cartlogo1.jpg" alt="Cart Icon">
+            </a>
+        </div>
+    </div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button type="button" onclick="searchProducts()">Search</button>
+    </div>
+    
+    <div class="scrolling-text">
+        <span>Welcome to our Shop...Click 'Products' to shop more products.</span>
+    </div>
+    <div class="image-container" id="product-list">
+        <!-- Example product boxes, add more as needed -->
+        <div class="product-box" data-name="Men T-Shirts" data-color="White" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_basic1.jpg" alt="T-Shirt 1">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>polo style for men</p>
+                <p>Price: Rs560</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo_blue1.jpg" alt="T-Shirt 2">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs300</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="Voilet" data-type="basic">
+            <img src="E:\Assisgnment-appwave\for men round neck1.jpg" alt="T-Shirt 3">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Round Neck style for men</p>
+                <p>Price: Rs500</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="White" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle1.jpg" alt="T-Shirt 5">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo style for men</p>
+                <p>Price: Rs600</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="Gray" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle2.jpg" alt="T-Shirt 6">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs560</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo_blue5.jpg" alt="T-Shirt 6">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs260</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <!-- Add more product boxes similarly -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

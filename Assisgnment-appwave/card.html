@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Store for T-Shirts</title>
+    <link rel="stylesheet" href="checkbox.css">
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo">
+            <img src="E:\Assisgnment-appwave\logo2.jpg" alt="ML Store Logo">
+            <span>ML Store</span>
+        </div>
+        <div class="nav-links">
+            <a href="product.html">Products</a>
+            <a href="checkbox.html"> Home</a>
+            <a href="card.html">
+                <img src="E:\Assisgnment-appwave\cartlogo1.jpg" alt="Cart Icon">
+            </a>
+        </div>
+    </div>
+    <div class="cart-container">
+        <h2> Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total-price-container">
+            <button id="total-button">Total</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+            } else {
+                cartItemsContainer.innerHTML = cartItems.map((item, index) => `
+                    <div class="cart-item" data-index="${index}">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <p>${item.name}</p>
+                            <p>${item.price}</p>
+                            <input type="number" value="${item.quantity}" min="1" max="5" class="quantity">
+                            <button onclick="deleteItem(${index})">Delete</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            document.querySelectorAll('.quantity').forEach(input => {
+                input.addEventListener('change', (event) => {
+                    const index = event.target.parentElement.parentElement.getAttribute('data-index');
+                    const newQuantity = event.target.value;
+
+                    if (newQuantity > 5) {
+                        alert(`The maximum quantity allowed is 5`);
+                        event.target.value = 5;
+                        updateQuantity(index, 5);
+                    } else {
+                        updateQuantity(index, newQuantity);
+                    }
+                    updateTotalPrice();
+                });
+            });
+
+            updateTotalPrice();
+
+            function deleteItem(index) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            window.location.reload();
+            }
+            function updateQuantity(index, quantity) {
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                cartItems[index].quantity = quantity;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+
+            function updateTotalPrice() {
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                let totalPrice = 0;
+                cartItems.forEach(item => {
+                    const price = parseFloat(item.price.replace('Rs', '').trim());
+                    totalPrice += price * item.quantity;
+                });
+                totalPriceElement.innerText = `Rs${totalPrice.toFixed(2)}`;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

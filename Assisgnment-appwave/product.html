@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Store for T-Shirts</title>
+    <link rel="stylesheet" href="checkbox.css">
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo">
+            <img src="E:\Assisgnment-appwave\logo2.jpg" alt="ML Store Logo">
+         <span> ML Store </span>
+        </div>
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="checkbox.html"> Home </a>
+            <a href="card.html">
+                <img src="E:\Assisgnment-appwave\cartlogo1.jpg" alt="Cart Icon">
+            </a>
+        </div>
+    </div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button type="button" onclick="searchProducts()">Search</button>
+    </div>
+    <div class="filter-container">
+        <h3>Filter</h3>
+        <button id="filter-button" onclick="applyFilters()">Apply Filters</button>
+        <div class="filter-section">
+            <h4>Colour</h4>
+            <label><input type="checkbox" value="blue" data-filter="color"> Blue</label><br>
+            <label><input type="checkbox" value="green" data-filter="color"> Green</label><br>
+            <label><input type="checkbox" value="red" data-filter="color"> Red</label>
+        </div>
+        <div class="filter-section">
+            <h4>Gender</h4>
+            <label><input type="checkbox" value="men" data-filter="gender"> Men</label><br>
+            <label><input type="checkbox" value="women" data-filter="gender"> Women</label>
+        </div>
+        <div class="filter-section">
+            <h4>Price</h4>
+            <label><input type="checkbox" value="low" data-filter="price"> 0 to Rs250</label><br>
+            <label><input type="checkbox" value="medium" data-filter="price"> Rs251-Rs450</label><br>
+            <label><input type="checkbox" value="high" data-filter="price"> Rs450-Above</label>
+        </div>
+        <div class="filter-section">
+            <h4>Type</h4>
+            <label><input type="checkbox" value="hoodle" data-filter="type"> Hoodle</label><br>
+            <label><input type="checkbox" value="polo" data-filter="type"> Polo</label><br>
+            <label><input type="checkbox" value="basic" data-filter="type"> Basic</label>
+        </div>
+    </div>
+    
+    <div class="image-container" id="product-list">
+        <!-- Example product boxes, add more as needed -->
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_blue3.jpg" alt="T-Shirt 9">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Hoodle style for women</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_green2.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs200</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_red1.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs290</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_blue1.jpg" alt="T-Shirt 10">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Hoodle style for women</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_red2.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs340</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_red3.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs290</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo_blue5.jpg" alt="T-Shirt 6">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs260</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+       
+        
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="basic">
+            <img src="E:\Assisgnment-appwave\women_basic_blue1.jpg" alt="T-Shirt 11">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Basic style for women</p>
+                <p>Price: Rs150</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="basic">
+            <img src="E:\Assisgnment-appwave\women_basic_blue2.jpg" alt="T-Shirt 12">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Basic style for women</p>
+                <p>Price: Rs180</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_green1.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs200</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="basic">
+            <img src="E:\Assisgnment-appwave\women_basic_blue3.jpg" alt="T-Shirt 13">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Basic style for women</p>
+                <p>Price: Rs150</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo1.jpg" alt="T-Shirt 1">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs260</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_red1.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Hoodle style for men</p>
+                <p>Price: Rs490</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\women_polofullsleeve_green1.jpg" alt="T-Shirt 14">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo Full Sleeve for women</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_red2.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Hoodle style for men</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+       
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\women_polofullsleeve_green2.jpg" alt="T-Shirt 15">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo Full Sleeve for women</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_red1.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs190</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+       
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\women_polofullsleeve_green3.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo Full Sleeve for women</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_green1.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>hoodle style for women</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\women_polofullsleeve_green4.jpg" alt="T-Shirt 17">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo Full Sleeve for women</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_green2.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>hoodle style for women</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="product-box" data-name="Women T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\women_polofullsleeve_green5jpg.jpg" alt="T-Shirt 18">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo Full Sleeve for women</p>
+                <p>Price: Rs430</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\men_polofullsleeve_green6.jpg" alt="T-Shirt 19">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo Full Sleeve for men</p>
+                <p>Price: Rs430</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="polofullsleeve">
+            <img src="E:\Assisgnment-appwave\men_polofullsleeve_green7.jpg" alt="T-Shirt 20">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo Full Sleeve for men</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo_blue2.jpg" alt="T-Shirt 3">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs260</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_polo_green1.jpg" alt="T-Shirt 21">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo style for men</p>
+                <p>Price: Rs300</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_polo_blue1.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>polo style for men</p>
+                <p>Price: Rs200</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\women_basic_red1.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Basic style for women</p>
+                <p>Price: Rs100</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_polo_blue2.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>polo style for men</p>
+                <p>Price: Rs300</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\women_basic_red2.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Basic style for women</p>
+                <p>Price: Rs250</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\women_basic_red3.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Basic style for women</p>
+                <p>Price: Rs250</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_polo_blue3.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>polo style for men</p>
+                <p>Price: Rs200</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo_red2.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>polo style for women</p>
+                <p>Price: Rs300</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_basic_red3.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>polo style for women</p>
+                <p>Price: Rs250</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_red1.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>hoodle style for women</p>
+                <p>Price: Rs450</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_red2.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>hoodle style for women</p>
+                <p>Price: Rs350</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_green1.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>hoodle style for men</p>
+                <p>Price: Rs290</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="red" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_red3.jpg" alt="T-Shirt 16">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>hoodle style for women</p>
+                <p>Price: Rs300</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_red2.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs390</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+       
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_green2.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Hoodle style for men</p>
+                <p>Price: Rs340</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_polo_green2.jpg" alt="T-Shirt 22">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo style for men</p>
+                <p>Price: Rs350</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="polo">
+            <img src="E:\Assisgnment-appwave\women_polo_blue3.jpg" alt="T-Shirt 4">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Polo style for women</p>
+                <p>Price: Rs350</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="green" data-type="polo">
+            <img src="E:\Assisgnment-appwave\men_polo_green3.jpg" alt="T-Shirt 23">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Polo style for men</p>
+                <p>Price: Rs250</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_blue1.jpg" alt="T-Shirt 24">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>hoodle style for men</p>
+                <p>Price: Rs380</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_blue2.jpg" alt="T-Shirt 25">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Hoodle style for men</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_blue3.jpg" alt="T-Shirt 26">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Hoodle style for men</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_blue1.jpg" alt="T-Shirt 27">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs100</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_blue2.jpg" alt="T-Shirt 28">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs170</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="blue" data-type="basic">
+            <img src="E:\Assisgnment-appwave\men_basic_blue3.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Basic style for men</p>
+                <p>Price: Rs200</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_blue1.jpg" alt="T-Shirt 7">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Hoodle style for women</p>
+                <p>Price: Rs350</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-box" data-name="Men T-Shirts" data-color="red" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\men_hoodle_red3.jpg" alt="T-Shirt 29">
+            <div class="product-details">
+                <h2>Men T-Shirts</h2>
+                <p>Hoodle style for men</p>
+                <p>Price: Rs400</p>
+                <button type="button" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+       
+        <div class="product-box" data-name="Women T-Shirts" data-color="Blue" data-type="hoodle">
+            <img src="E:\Assisgnment-appwave\women_hoodle_blue2.jpg" alt="T-Shirt 8">
+            <div class="product-details">
+                <h2>Women T-Shirts</h2>
+                <p>Hoodle style for women</p>
+                <p>Price: Rs380</p>
+                <button type="button" onclick="addToCart(this,)">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Add more product boxes similarly -->
+    </div>
+    
+    <script>
+        function searchProducts() {
+        const query = document.getElementById('search-input').value.toLowerCase().split(' ');
+        const products = document.querySelectorAll('.product-box');
+        products.forEach(product => {
+            const name = product.dataset.name.toLowerCase();
+            const color = product.dataset.color.toLowerCase();
+            const type = product.dataset.type.toLowerCase();
+        
+            const matches = query.every(term => name.includes(term) || color.includes(term) || type.includes(term));
+        
+            if (matches) {
+                product.style.display = '';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+        function applyFilters() {
+            const productList = document.getElementById('product-list');
+            const products = productList.getElementsByClassName('product-box');
+            const filters = {
+                color: [],
+                gender: [],
+                price: [],
+                type: []
+            };
+
+            document.querySelectorAll('.filter-section input[type="checkbox"]').forEach(checkbox => {
+                if (checkbox.checked) {
+                    filters[checkbox.getAttribute('data-filter')].push(checkbox.value);
+                }
+            });
+
+            Array.from(products).forEach(product => {
+                const color = product.getAttribute('data-color');
+                const gender = product.getAttribute('data-gender');
+                const price = product.getAttribute('data-price');
+                const type = product.getAttribute('data-type');
+
+                let isVisible = true;
+
+                if (filters.color.length > 0 && !filters.color.includes(color)) {
+                    isVisible = false;
+                }
+                if (filters.gender.length > 0 && !filters.gender.includes(gender)) {
+                    isVisible = false;
+                }
+                if (filters.price.length > 0 && !filters.price.includes(price)) {
+                    isVisible = false;
+                }
+                if (filters.type.length > 0 && !filters.type.includes(type)) {
+                    isVisible = false;
+                }
+
+                product.style.display = isVisible ? 'block' : 'none';
+            });
+        }
+    function addToCart(button) {
+    const productBox = button.parentElement.parentElement;
+    const productImage = productBox.querySelector('img').src;
+    const productName = productBox.querySelector('.product-details h2, .product-details h3, .product-details h4').textContent;
+    const productPrice = productBox.querySelector('.product-details p:nth-child(3)').textContent;
+    
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push({ image: productImage, name: productName, price: productPrice, quantity: 1 });
+    
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+    window.location.href = 'card.html';
+}
+function deleteItem(index) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.splice(index, 1);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    window.location.reload();
+    }
+    $(document).ready(function() {
+        function displayCart() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            $('#cartItems').empty();
+    
+            if (cart.length === 0) {
+                $('#emptyCartMessage').show();
+                $('#totalButton').hide();
+                $('#totalPrice').hide();
+            } else {
+                $('#emptyCartMessage').hide();
+                $('#totalButton').show();
+                $('#totalPrice').show();
+    
+                cart.forEach(item => {
+                    var cartItem = `
+                        <div class="cart-item" data-id="${item.id}">
+                            <img src="${item.img}" alt="${item.title}" class="cart-img">
+                            <span class="cart-title">${item.title}</span>
+                            <input type="number" class="quantity" value="${item.quantity}" min="1" max="10">
+                            <button class="delete">Delete</button>
+                        </div>
+                    `;
+                    $('#cartItems').append(cartItem);
+                });
+    
+                $('.delete').click(function() {
+                    var itemId = $(this).parent().data('id');
+                    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart = cart.filter(item => item.id !== itemId);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    displayCart();
+                });
+    
+                $('.quantity').change(function() {
+                    var itemId = $(this).parent().data('id');
+                    var newQuantity = parseInt($(this).val());
+                    if (newQuantity > 10) {
+                        alert('Quantity cannot be more than 10');
+                        $(this).val(10);
+                        newQuantity = 10;
+                    }
+                    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    var cartItem = cart.find(item => item.id === itemId);
+                    cartItem.quantity = newQuantity;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateTotalPrice();
+                });
+    
+                updateTotalPrice();
+            }
+        }
+    
+        function updateTotalPrice() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+            });
+            $('#totalPrice').text(`Total: $${total}`);
+        }
+    
+        $('#totalButton').click(function() {
+            updateTotalPrice();
+        });
+    
+        displayCart();
+    });
+    
+    </script>
+</body>
+</html>
